@@ -219,7 +219,7 @@ sub get_css_file {
     print $css_fh "h1         { font-size: 110%; }\n";
     print $css_fh "h2, h3, h4 { font-size: 100%; }\n";
     # This prevents the extra newline between bullet and text on Kindles:
-    print $css_fh "li p       { display: inline-block; }\n" if $kindle;
+    print $css_fh "li p       { display: inline; }\n" if $kindle;
 
     close $css_fh;
 
