@@ -27,6 +27,7 @@ my $css_filename   = '';
 my $cover_filename = '';
 my $user_css       = 0;
 my $xhtml_only     = 0;
+my $kindle         = 0;
 my $version        = 0;
 my $man            = 0;
 my $help           = 0;
@@ -217,6 +218,8 @@ sub get_css_file {
 
     print $css_fh "h1         { font-size: 110%; }\n";
     print $css_fh "h2, h3, h4 { font-size: 100%; }\n";
+    # This prevents the extra newline between bullet and text on Kindles:
+    print $css_fh "li p       { display: inline-block; }\n" if $kindle;
 
     close $css_fh;
 
@@ -308,6 +311,7 @@ sub get_commandline_options {
         'c|cover=s'      => \$cover_filename,
         'v|version'      => \$version,
         'x|xhtml-only'   => \$xhtml_only,
+        'kindle!'        => \$kindle,
         'h|help'         => \$help,
         'man'            => \$man,
         'whine!'         => \$whine,
